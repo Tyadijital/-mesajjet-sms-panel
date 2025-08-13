@@ -1,0 +1,4 @@
+body { font-size: 0.95rem; }
+.brand-link { text-align: center; }
+.card .card-header .card-title { margin: 0; }
+textarea.form-control { resize: vertical; }

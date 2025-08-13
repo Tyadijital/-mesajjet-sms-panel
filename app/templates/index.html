@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-user-plus mr-2"></i>Müşterilere İzleme Yetkisi Daveti Gönder</h3>
+      </div>
+      <form method="post" action="{{ url_for('invite') }}">
+        <div class="card-body">
+          <div class="form-group">
+            <label>Google Ads Müşteri ID</label>
+            <input type="text" name="customer_id" class="form-control" value="{{ default_customer_id }}" placeholder="123-456-7890" required />
+            <small class="form-text text-muted">Yöneticiden farklıysa hedef müşteri ID'sini girin.</small>
+          </div>
+
+          <div class="form-group">
+            <label>E-posta Adresleri</label>
+            <textarea name="emails" class="form-control" rows="5" placeholder="ornek@domain.com, ikinci@domain.com" required></textarea>
+            <small class="form-text text-muted">Virgül veya noktalı virgül ile ayırın.</small>
+          </div>
+
+          <div class="form-group">
+            <label>Erişim Rolü</label>
+            <select name="access_role" class="form-control">
+              <option value="read_only" selected>Read Only (Sadece İzleme)</option>
+              <option value="email_only">Email Only</option>
+              <option value="standard">Standard</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <div class="bg-light p-3 rounded small">
+            <div><strong>Login Manager ID:</strong> {{ login_customer_id or '-' }}</div>
+            <div class="text-muted">Kimlik bilgileri .env dosyasından okunur.</div>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <button class="btn btn-primary"><i class="fas fa-paper-plane mr-1"></i> Davet Gönder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

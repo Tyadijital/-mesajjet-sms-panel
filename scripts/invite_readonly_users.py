@@ -6,12 +6,7 @@ from typing import List, Optional
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
-
-
-def sanitize_customer_id(customer_id: Optional[str]) -> Optional[str]:
-    if customer_id is None:
-        return None
-    return customer_id.replace("-", "").strip()
+from app.google_ads_inviter import _sanitize_customer_id as sanitize_customer_id
 
 
 def load_config_from_args_and_env(args: argparse.Namespace) -> dict:

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-10">
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Sonuçlar — Müşteri: {{ customer_id }}, Rol: {{ access_role }}</span>
+          <a href="/" class="btn btn-light btn-sm">Yeni Davet</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-success">Başarılı ({{ successes|length }})</h5>
+            <ul class="list-group mb-3">
+              {% for r in successes %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span><i class="fas fa-check-circle text-success mr-2"></i>{{ r.email }}</span>
+                  <code class="small">{{ r.resource_name }}</code>
+                </li>
+              {% else %}
+                <li class="list-group-item text-muted">Kayıt yok</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-danger">Hatalı ({{ failures|length }})</h5>
+            <ul class="list-group mb-3">
+              {% for r in failures %}
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-times-circle text-danger mr-2"></i>{{ r.email }}</span>
+                  </div>
+                  <div class="small text-muted mt-1">{{ r.message }}</div>
+                </li>
+              {% else %}
+                <li class="list-group-item text-muted">Kayıt yok</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
