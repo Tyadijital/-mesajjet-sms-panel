@@ -1,0 +1,16 @@
+{
+  "name": "ajanskurumsal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ajans ve kurumsal web sitesi - benzersiz tema ve dahili admin panel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "init": "node server.js --init"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
